@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Unit Converter</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+		form {
+			margin: 0 auto;
+			max-width: 400px;
+			text-align: center;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight:bold;
+		}
+
+		input[type="number"] {
+                  width: 100%;
+			padding: 5px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			margin-bottom: 20px;
+		}
+
+		select {
+			background-color:green;
+                  width: 100%;
+			padding: 5px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			margin-bottom: 20px;
+		}
+
+		input[type="submit"] {
+			background-color:#4CAE50;
+			color: #fff;
+			border: none;
+			padding: 10px 30px;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+
+		input[type="submit"]:hover {
+			background-color: Red;
+		}
+	</style>
+</head>
+<body>
+	<h1>Unit Converter</h1>
+	<form>
+		<label for="value">Value:</label>
+		<input type="number" id="value" name="value" placeholder="Enter a value...">
+		<label for="from">From:</label>
+		<select id="from" name="from">
+			<option value="m">Meter</option>
+			<option value="km">Kilometer</option>
+			<option value="mi">Mile</option>
+			<option value="ft">Feet</option>
+		</select>
+		<label for="to">To:</label>
+		<select id="to" name="to">
+			<option value="m">Meter</option>
+			<option value="km">Kilometer</option>
+			<option value="mi">Mile</option>
+			<option value="ft">Feet</option>
+		</select>
+		<input type="submit" value="Convert">
+	</form>
+	<script>
+		document.querySelector('form').addEventListener('submit', function(e) {
+			e.preventDefault();
+
+			const value = document.getElementById('value').value;
+			const from = document.getElementById('from').value;
+			const to = document.getElementById('to').value;
+
+			const units = {
+				'm': 1,
+				'km': 1000,
+				'mi': 1609.344,
+				'ft': 0.3048
+			};
+
+			const result = value * units[from] / units[to];
+
+			alert(`${value} ${from} = ${result} ${to}`);
+		});
+	</script>
+</body>
+</html>
